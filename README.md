@@ -23,7 +23,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 ## 📂 Progress Tracker
 
 - [x] **Day 01:** [- [Day 01: Iris Dataset EDA](Day_01_Iris_EDA/README.md)](Day_01_Iris_EDA/) - Exploratory Data Analysis & Visualization.
-- [ ] **Day 02:** ...
+- [ ] **Day 02:** [- [Day 02: Titanic Dataset Handling Missing Value](Day_02_Titanic_HandlingMissingValue/README.md)](Day_02_Titanic_HandlingMissingValue/)- Handling Missing Value & Visualization.
 - [ ] **Day 03:** ...
 
 *(Daftar ini akan terus diperbarui setiap hari)*
