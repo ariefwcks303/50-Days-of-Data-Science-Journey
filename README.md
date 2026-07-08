@@ -2,7 +2,7 @@
 
 Selamat datang di jurnal pembelajaran teknis saya! Repositori ini mendokumentasikan perjalanan saya selama 50 hari dalam mendalami dunia **Data Science dan Machine Learning**. 
 
-Tujuan utama dari perjalanan ini adalah untuk membangun intuisi data, mengasah *coding skill* (Python/SQL), dan menciptakan portofolio yang komprehensif dari proyek-proyek praktis.
+Tujuan utama dari perjalanan ini adalah untuk membangun intuisi data, mengasah *coding skill* (Python), dan menciptakan portofolio yang komprehensif dari proyek-proyek praktis.
 
 ## 📈 Roadmap Perjalanan
 Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
@@ -22,7 +22,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 
 ## 📂 Progress Tracker
 
-- [x] **Day 01:** [Iris Dataset Exploration](Day_01_Iris_EDA/) - Exploratory Data Analysis & Visualization.
+- [x] **Day 01:** [- [Day 01: Iris Dataset EDA](Day_01_Iris_EDA/README.md)](Day_01_Iris_EDA/) - Exploratory Data Analysis & Visualization.
 - [ ] **Day 02:** ...
 - [ ] **Day 03:** ...
 
