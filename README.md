@@ -25,7 +25,10 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 01:** [- [Day 01: Iris Dataset EDA](Day_01_Iris_EDA/README.md)](Day_01_Iris_EDA/) - Exploratory Data Analysis & Visualization.
 - [x] **Day 02:** [- [Day 02: Titanic Dataset Handling Missing Value](Day_02_Titanic_HandlingMissingValue/README.md)](Day_02_Titanic_HandlingMissingValue/)- Handling Missing Value & Visualization.
 - [x] **Day 03:** [Day 03: Analisis Penjualan Ritel Supermarket](Day_03_Analisa_Data_Supermarket/) - Data Parsing & Eksplorasi Skala Besar.
+- [x] **Day 04:** [Day 04: World Happiness Report Analysis](Day_04_World_Happiness_Report/) - Correlation Analysis & Global Happiness Ranking.
+
 *(Daftar ini akan terus diperbarui setiap hari)*
+
 
 ## 💡 About Me
 Saya **Arief Wicaksono**, seorang pembelajar yang sedang bertransisi ke bidang Data Science. Saya memiliki latar belakang teknik yang kuat dan sangat antusias dalam membangun solusi berbasis data dan AI. Mari terhubung melalui .
