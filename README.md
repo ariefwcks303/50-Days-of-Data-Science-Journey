@@ -28,6 +28,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 04:** [Day 04: World Happiness Report Analysis](Day_04_World_Happy_Index/README.md) - Correlation Analysis & Global Happiness Ranking.
 - [x] **Day 05:** [Day 05: Netflix Catalog Analysis](Day_05_Analisa_Netflix_Katalog/README.md) - String Manipulation, Datetime Parsing & Content Distribution EDA.
 - [x] **Day 06:** [Day 06: Analisis Penjualan Global Superstore](Day_06_analisa_superstore/README.md) - Pivot Table Aggregation, Profit Margin EDA & Visualization.
+- [x] **Day 07:** [Day 07: Analisis Performa Siswa](Day_07_analisa_performa_siswa/README.md) - Exploratory Data Analysis, Correlation Analysis, Crosstab & Statistical Hypothesis Testing.
 
 
 *(Daftar ini akan terus diperbarui setiap hari)*
