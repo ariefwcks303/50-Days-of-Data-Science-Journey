@@ -29,7 +29,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 05:** [Day 05: Netflix Catalog Analysis](Day_05_Analisa_Netflix_Katalog/README.md) - String Manipulation, Datetime Parsing & Content Distribution EDA.
 - [x] **Day 06:** [Day 06: Analisis Penjualan Global Superstore](Day_06_analisa_superstore/README.md) - Pivot Table Aggregation, Profit Margin EDA & Visualization.
 - [x] **Day 07:** [Day 07: Analisis Performa Siswa](Day_07_analisa_performa_siswa/README.md) - Exploratory Data Analysis, Correlation Analysis, Crosstab & Statistical Hypothesis Testing.
-
+[x] **Day 08:** [Day 08: Red Wine Quality EDA](Day_08_Eksplorasi_kualitas_anggur/README.md) — Analisis Fisiko-Kimia, Deteksi Outlier (Boxplot), dan Matriks Korelasi Kualitas Anggur.
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
