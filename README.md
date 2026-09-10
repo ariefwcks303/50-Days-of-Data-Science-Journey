@@ -33,6 +33,8 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 09:** [Day 09: Analisa Data Kesehatan Diabetes EDA](Day_09_Analisa_data_kesehatan_diabetes/README.md) — Deteksi Anomali Nilai Negatif, Analisis Distribusi & Korelasi Multivariat, serta Pairplot Fitur Risiko Diabetes.
 - [x] **Day 10:** [Day 10: Mini Project EDA](Day_10_mini_project_eda_telco_churn/README.md) — Reusable EDA Function, Customer Churn Analysis & Chi-Square Statistical Testing.
 - [x] **Day 11:** [Day 11: Dasar Visualisasi dengan Matplotlib](Day_11_data_visualization_datasupermarket/README.md) — Data Visualization with Line, Bar, Histogram, Pie & Subplot.
+- [x] **Day 12:** [Day 12: Visualisasi Statistik dengan Seaborn](Day_12_redwine_eda_seaborn/README.md) — Univariate, Multivariate & Correlation Matrix Analysis using Red Wine Quality Dataset.
+
 
 
 *(Daftar ini akan terus diperbarui setiap hari)*
