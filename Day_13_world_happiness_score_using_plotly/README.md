@@ -102,6 +102,9 @@ Visualisasi juga menggunakan:
 * **Color** → Healthy Life Expectancy
 * **Hover** → Country Name dan informasi terkait
 
+🔗 [Buka Grafik Interaktif: GDP vs Happiness Score](https://raw.githack.com/ariefwcks303/50-Days-of-Data-Science-Journey/main/Day_13_world_happiness_score_using_plotly/Images/g1_gdp_vs_happiness_score.html)
+
+
 ### Insight
 
 Terlihat adanya **tren positif** antara GDP per kapita dan Happiness Score.
@@ -117,6 +120,8 @@ Visualisasi interaktif juga memungkinkan pengguna melihat informasi setiap negar
 # 🏆 2. Bar Chart — Top 10 Happiest Countries
 
 10 negara dengan ranking kebahagiaan tertinggi divisualisasikan menggunakan **horizontal bar chart**.
+
+🔗 [Buka Grafik Interaktif: Top 10 Countries](https://raw.githack.com/ariefwcks303/50-Days-of-Data-Science-Journey/main/Day_13_world_happiness_score_using_plotly/Images/g2_top10_countries.html)
 
 ### Insight
 
@@ -138,6 +143,8 @@ Visualisasi juga menyediakan informasi melalui hover:
 * Happiness Score
 * Ranking
 
+🔗 [Buka Grafik Interaktif: World Happiness Map](https://raw.githack.com/ariefwcks303/50-Days-of-Data-Science-Journey/main/Day_13_world_happiness_score_using_plotly/Images/g3_world_happiness_map.html)
+
 ### Insight
 
 Peta menunjukkan adanya pola geografis dalam distribusi Happiness Score.
@@ -154,6 +161,8 @@ Visualisasi kedua menggunakan scatter plot untuk melihat hubungan antara:
 * `Freedom to make life choices`
 
 Warna menunjukkan **Happiness Score**, sedangkan ukuran titik menunjukkan **Social Support**.
+
+🔗 [Buka Grafik Interaktif: Corruption vs Freedom](https://raw.githack.com/ariefwcks303/50-Days-of-Data-Science-Journey/main/Day_13_world_happiness_score_using_plotly/Images/g4_corruption_vs_freedom.html)
 
 ### Insight
 
@@ -265,6 +274,11 @@ Kemampuan membuat visualisasi interaktif menjadi fondasi penting sebelum masuk k
 ```text
 Day_13_World_happiness_report_using_plotly/
 │
+├── Images/
+│   ├── g1_gdp_vs_happiness_score.html
+│   ├── g2_top10_countries.html
+│   ├── g3_world_happiness_map.html
+│   └── g4_corruption_vs_freedom.html
 ├── Day_13_World_happiness_report_using_plotly.ipynb
 └── README.md
 ```
