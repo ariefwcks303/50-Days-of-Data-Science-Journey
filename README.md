@@ -43,6 +43,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 17:** [Day 17: Text Analysis: Netflix Genre & Description](Day_17_analisa_teks_netflix/README.md) — Basic Text Mining, Regex Tokenization, Stopwords Filtering, & Word Frequency Analysis using Netflix Dataset.
 - [x] **Day 18:** [Day 18: Mini Project - Story Telling with Data](Day_18_storytelling_with_data/README.md) — Data Storytelling Framework, Sales vs Profit Comparison, Sub-Category Profitability Analysis, & Actionable Business Recommendations using Superstore Dataset.
 - [x] **Day 19:** [Day 19: Pengantar Machine Learning & Linear Regression](Day_19_pengantar_linear_regresi/README.md) — Supervised Learning, Train/Test Split, Linear Regression Modeling, & Model Evaluation (MAE, RMSE, R²) using Red Wine Quality Dataset.
+- [x] **Day 20:** [Day 20: Prediksi Harga Rumah Boston](Day_20_prediksi_harga_rumah_boston/README.md) — Multiple Linear Regression, Feature Correlation, Multicollinearity Awareness, & Model Evaluation (MAE, RMSE, R²) using Boston Housing Dataset.
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
