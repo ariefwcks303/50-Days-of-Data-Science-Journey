@@ -45,6 +45,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 19:** [Day 19: Pengantar Machine Learning & Linear Regression](Day_19_pengantar_linear_regresi/README.md) — Supervised Learning, Train/Test Split, Linear Regression Modeling, & Model Evaluation (MAE, RMSE, R²) using Red Wine Quality Dataset.
 - [x] **Day 20:** [Day 20: Prediksi Harga Rumah Boston](Day_20_prediksi_harga_rumah_boston/README.md) — Multiple Linear Regression, Feature Correlation, Multicollinearity Awareness, & Model Evaluation (MAE, RMSE, R²) using Boston Housing Dataset.
 - [x] **Day 21:** [Day 21: Prediksi Harga Mobil Bekas dengan Random Forest](Day_21_prediksi_harga_mobil/README.md) — Real-World Data Cleaning, Feature Engineering (Age & Turbo), Outlier Removal, Random Forest Regressor, & Model Evaluation (R², MAE, RMSE) using Car Price Prediction Dataset.
+- [x] **Day 22:** [Day 22: Prediksi Tip Restoran dengan Linear Regression](Day_22_prediksi_tip_restoran/README.md) — Feature Engineering, Target Leakage Prevention, One-Hot Encoding, Linear Regression, Model Coefficient Interpretation, & Model Evaluation (R², MAE, RMSE) using Tips Dataset.
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
