@@ -49,8 +49,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 23:** [Day 23: Perbandingan Model Regresi (LR vs KNN vs Decision Tree)](Day_23_compare_3_models-(LR-KNN-DT)/README.md) — Model Comparison, Feature Scaling (StandardScaler), Anti Data Leakage, Non-Linear Relationship Analysis, & Model Evaluation (R², MAE, RMSE) using Boston Housing Dataset.
 - [x] **Day 24:** [Day 24: Regularisasi Regression dengan Ridge & Lasso](Day_24_regularisasi_lasso_&_ridge/README.md) — Ridge (L2) & Lasso (L1) Regularization, StandardScaler, Alpha Sensitivity Analysis, Feature Selection, & Model Evaluation (R², MAE, MSE, RMSE) using Boston Housing Dataset.
 - [x] **Day 25:** [Day 25: Decision Tree & Random Forest Regressor](Day_25_random_forest/README.md) — Data Cleaning, Feature Engineering (Age & Turbo), One-Hot Encoding, Decision Tree vs Random Forest, Feature Importance, & Model Evaluation (R², MAE, RMSE) using Car Price Prediction Dataset.
-
-
+- [x] **Day 26: Day 26:**[ Gradient Boosting untuk Regresi ](Day_26_random_forest_vs_gradient_boosting/README.md) — Boosting Concept (Sequential Error Correction), Gradient Boosting Regressor vs Random Forest, Hyperparameter Tuning (n_estimators & learning_rate), Feature Importance Analysis, & Model Evaluation (R², MAE, RMSE) using Boston Housing Dataset
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
