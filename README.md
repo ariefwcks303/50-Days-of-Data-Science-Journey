@@ -51,6 +51,7 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 25:** [Day 25: Decision Tree & Random Forest Regressor](Day_25_random_forest/README.md) — Data Cleaning, Feature Engineering (Age & Turbo), One-Hot Encoding, Decision Tree vs Random Forest, Feature Importance, & Model Evaluation (R², MAE, RMSE) using Car Price Prediction Dataset.
 - [x] **Day 26: Day 26:**[ Gradient Boosting untuk Regresi ](Day_26_random_forest_vs_gradient_boosting/README.md) — Boosting Concept (Sequential Error Correction), Gradient Boosting Regressor vs Random Forest, Hyperparameter Tuning (n_estimators & learning_rate), Feature Importance Analysis, & Model Evaluation (R², MAE, RMSE) using Boston Housing Dataset
 - [x] **Day 27:** [Day 27 — Evaluasi Model Regresi](Day_27_Evaluation_Model_Regression/README.md) — Metrik Evaluasi Regresi (MAE, MSE, RMSE, R² Score), Analisis Error & Skala Target, serta Implementasi K-Fold Cross-Validation menggunakan Boston Housing Dataset.
+- [x] **Day 28:** [Day 28: Mini Project Regresi End-to-End — Prediksi Harga Mobil Bekas](Day_28_mini_project_regression_with_pipeline/README.md) — End-to-End Regression Workflow, Data Cleaning, Feature Engineering, Pipeline & ColumnTransformer, Random Forest Regressor, Cross-Validation, Error Analysis, & Model Evaluation (R², MAE, RMSE) using Car Price Prediction Dataset.
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
