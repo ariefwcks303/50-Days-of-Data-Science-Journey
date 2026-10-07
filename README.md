@@ -54,6 +54,9 @@ Perjalanan ini dibagi menjadi beberapa fase pengembangan kompetensi:
 - [x] **Day 28:** [Day 28: Mini Project Regresi End-to-End — Prediksi Harga Mobil Bekas](Day_28_mini_project_regression_with_pipeline/README.md) — End-to-End Regression Workflow, Data Cleaning, Feature Engineering, Pipeline & ColumnTransformer, Random Forest Regressor, Cross-Validation, Error Analysis, & Model Evaluation (R², MAE, RMSE) using Car Price Prediction Dataset.
 - [x] **Day 29:** [Day 29: Pengantar Klasifikasi — Logistic Regression](Day_29_pengantar_logistic_regression/README.md) — Introduction to Classification, Data Cleaning & Median Imputation, Train-Test Split with Stratification, StandardScaler, Logistic Regression, Confusion Matrix, Classification Report, & Model Evaluation using Pima Indians Diabetes Dataset.
 - [x] **Day 30:** [Day 30 — Mini Project Klasifikasi: Prediksi Korban Selamat Titanic](Day_30_logreg_&_ranfor_for_titanic_dataset/README.md) — End-to-End Classification Workflow, Exploratory Data Analysis, Data Cleaning & Missing Value Imputation, Feature Engineering, Encoding, Train-Test Split with Stratification, StandardScaler, Logistic Regression, Random Forest, Classification Report, Model Comparison, & Feature Importance using Titanic Dataset.
+- [x] **Day 31:** [Day 31 — Klasifikasi Iris dengan K-Nearest Neighbor](Day_31_multiclass_clasification_using_KNN/README.md) — Multi-Class Classification, Exploratory Data Analysis, Label Encoding, Train-Test Split with Stratification, StandardScaler, K-Nearest Neighbors (KNN), Hyperparameter Selection (k), Confusion Matrix, Classification Report, & Model Evaluation using Iris Dataset.
+
+
 
 *(Daftar ini akan terus diperbarui setiap hari)*
 
