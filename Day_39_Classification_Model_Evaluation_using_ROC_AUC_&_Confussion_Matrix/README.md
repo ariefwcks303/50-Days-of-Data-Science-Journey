@@ -1,190 +1,373 @@
-# Day 39 — Evaluasi Model Klasifikasi Menggunakan ROC-AUC dan Confusion Matrix
+# Day 39 — Evaluation Classification Model Using ROC, AUC & Confusion Matrix
 
-## 📌 Gambaran Proyek
+## 📌 Overview
 
-Membangun model klasifikasi saja belum cukup. Kita juga perlu memahami **jenis kesalahan prediksi**, kemampuan model membedakan kelas, serta konsekuensi pemilihan *threshold*. Notebook Day 39 berfokus pada evaluasi model **Logistic Regression** untuk klasifikasi indikasi penyakit jantung menggunakan **Confusion Matrix, Classification Report, ROC Curve, ROC-AUC, dan Precision-Recall Curve**.
+Pada Day 39, fokus pembelajaran adalah **mengevaluasi model klasifikasi secara menyeluruh**, bukan hanya melihat accuracy.
 
-> **Catatan:** Proyek ini merupakan eksperimen pembelajaran, bukan alat diagnosis atau skrining klinis yang telah tervalidasi.
+Studi kasus yang digunakan adalah **prediksi penyakit jantung** menggunakan Heart Disease Dataset. Model yang digunakan adalah **Logistic Regression**, kemudian dievaluasi menggunakan Confusion Matrix, Classification Report, ROC Curve, ROC-AUC, dan Precision-Recall Curve.
 
-## 🎯 Tujuan Pembelajaran
+Tujuan utama notebook ini adalah memahami bagaimana membaca performa model dari berbagai sudut pandang, terutama pada kasus prediksi medis yang memiliki konsekuensi berbeda antara False Positive dan False Negative.
 
-- Mengeksplorasi kualitas dan distribusi data pasien.
-- Menangani data duplikat dan melakukan pembagian data latih/uji secara terstratifikasi.
-- Melatih Logistic Regression menggunakan fitur yang telah distandardisasi.
-- Menginterpretasikan **TP, TN, FP, dan FN** dalam konteks klasifikasi penyakit jantung.
-- Memahami **accuracy, precision, recall, F1-score**, dan **ROC-AUC**.
-- Mengevaluasi *trade-off* precision–recall dan dampak perubahan *threshold*.
+---
 
-## 📂 Dataset
+## 🎯 Learning Objectives
 
-- **Nama:** Heart Disease Dataset
-- **Sumber:** [Kaggle — Heart Disease Dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset)
-- **Berkas:** `heart.csv`
-- **Data awal:** 1.025 baris × 14 kolom
-- **Fitur prediktor:** 13
-- **Target:** `target` (`0` = tidak terindikasi penyakit jantung, `1` = terindikasi penyakit jantung, berdasarkan label dataset)
+- Memahami cara membaca **Confusion Matrix**.
+- Memahami **Precision, Recall, dan F1-Score**.
+- Membuat dan menginterpretasikan **ROC Curve**.
+- Memahami **ROC-AUC** sebagai ukuran kemampuan model membedakan dua kelas.
+- Membuat dan membaca **Precision-Recall Curve**.
+- Memahami trade-off antara Precision dan Recall.
+- Memahami pentingnya **Recall** pada kasus prediksi penyakit.
 
-| Fitur | Keterangan |
+---
+
+## 📊 Dataset
+
+Dataset yang digunakan adalah **Heart Disease Dataset** dari Kaggle.
+
+**Source:** `johnsmith88/heart-disease-dataset`
+
+Dataset awal memiliki:
+
+- **1.025 baris**
+- **14 kolom**
+- Tidak terdapat missing value.
+- Target:
+  - `0` = tidak ada penyakit jantung
+  - `1` = ada penyakit jantung
+
+### Features
+
+| Feature | Description |
 |---|---|
 | `age` | Usia pasien |
-| `sex` | Jenis kelamin yang dikodekan secara numerik |
-| `cp` | Kategori nyeri dada |
-| `trestbps` | Tekanan darah saat istirahat |
-| `chol` | Kadar kolesterol serum |
-| `fbs` | Indikator gula darah puasa |
-| `restecg` | Kategori hasil EKG saat istirahat |
-| `thalach` | Detak jantung maksimum yang dicapai |
-| `exang` | Indikator angina akibat olahraga |
-| `oldpeak` | Depresi segmen ST akibat aktivitas |
-| `slope` | Kemiringan segmen ST |
-| `ca` | Jumlah pembuluh besar yang teramati |
-| `thal` | Kategori hasil pemeriksaan terkait thalassemia |
+| `sex` | Jenis kelamin |
+| `cp` | Tipe nyeri dada |
+| `trestbps` | Tekanan darah istirahat |
+| `chol` | Kolesterol |
+| `fbs` | Gula darah puasa |
+| `restecg` | Hasil resting electrocardiographic |
+| `thalach` | Detak jantung maksimum |
+| `exang` | Exercise-induced angina |
+| `oldpeak` | Depresi ST |
+| `slope` | Slope segmen ST |
+| `ca` | Jumlah pembuluh utama |
+| `thal` | Status thalassemia |
+| `target` | Target penyakit jantung |
 
-## 🛠️ Teknologi
+---
 
-Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, dan Jupyter Notebook/Google Colab.
+## 🧹 Data Cleaning
 
-## 🔍 Alur Eksperimen
+Pada tahap awal ditemukan:
 
-### 1. Eksplorasi dan pembersihan data
+- Dataset awal: **1.025 rows × 14 columns**
+- Missing value: **0**
+- Duplicate rows: **723**
 
-Notebook memeriksa struktur dataset, duplikasi, missing value, serta distribusi kelas target.
+Duplicate kemudian dihapus untuk menghindari data yang sama masuk ke proses training dan testing.
 
-| Kondisi | Data awal | Setelah menghapus duplikasi |
-|---|---:|---:|
-| Jumlah baris | 1.025 | 302 |
-| Jumlah kolom | 14 | 14 |
-| Duplikasi | 723 | 0 |
-| Missing value | 0 | 0 |
-| Target 0 | 499 | 138 |
-| Target 1 | 526 | 164 |
+Setelah `drop_duplicates()`:
 
-Sebanyak **723 baris duplikat** dihapus sebelum pemodelan. Proporsi kelas setelah pembersihan adalah sekitar **45,7% kelas 0** dan **54,3% kelas 1**.
+- Dataset menjadi **302 rows × 14 columns**
+- Duplicate: **0**
+- Missing value: **0**
+- Target `1`: **164 data (54.3%)**
+- Target `0`: **138 data (45.7%)**
 
-### 2. Exploratory Data Analysis (EDA)
+Distribusi target relatif seimbang.
 
-Visualisasi yang digunakan:
+---
 
-- **Countplot target:** melihat distribusi kedua kelas.
-- **Scatterplot usia vs `thalach`:** membandingkan detak jantung maksimum menurut usia dan kelas target.
-- **Heatmap korelasi:** mengeksplorasi hubungan statistik antarf fitur.
+## 🔎 Exploratory Data Analysis
 
-Notebook menyoroti fitur seperti `cp` dan `thalach` dalam analisis hubungan dengan target. **Korelasi tidak membuktikan hubungan sebab-akibat.**
+EDA dilakukan untuk memahami karakteristik dataset dan hubungan antara fitur dengan target.
 
-### 3. Preprocessing
+Beberapa analisis yang dilakukan:
 
-- Memisahkan `X` (13 fitur) dan `y` (`target`).
-- Membagi data dengan `train_test_split(test_size=0.2, random_state=42, stratify=y)`.
-- Menggunakan `StandardScaler`, dengan `fit_transform()` hanya pada data latih dan `transform()` pada data uji.
+### Target Distribution
 
-| Subset | Jumlah baris |
+Distribusi target setelah penghapusan duplicate:
+
+- 54.3% kelas `1`
+- 45.7% kelas `0`
+
+### Age vs Maximum Heart Rate
+
+Notebook menggunakan scatter plot antara:
+
+- `age`
+- `thalach`
+- `target`
+
+Visualisasi ini digunakan untuk melihat pola hubungan usia dan detak jantung maksimum terhadap target penyakit jantung.
+
+---
+
+## ✂️ Train-Test Split
+
+Dataset dibagi menjadi data training dan testing.
+
+| Dataset | Shape |
 |---|---:|
-| Data latih | 241 |
-| Data uji | 61 |
+| X_train | `(241, 13)` |
+| y_train | `(241,)` |
+| X_test | `(61, 13)` |
+| y_test | `(61,)` |
 
-Standardisasi dilakukan setelah pembagian data untuk mencegah **data leakage** dari statistik data uji.
+---
 
-### 4. Pemodelan
+## ⚙️ Feature Scaling
 
-Algoritma yang digunakan adalah **Logistic Regression** dengan `max_iter=1000` dan `random_state=42`.
+Fitur distandardisasi menggunakan `StandardScaler` sebelum digunakan oleh Logistic Regression.
+
+```python
+scaler = StandardScaler()
+
+X_train_scale = scaler.fit_transform(X_train)
+X_test_scale = scaler.transform(X_test)
+```
+
+Scaler di-fit menggunakan data training kemudian digunakan untuk mentransformasi data testing.
+
+---
+
+## 🤖 Modeling
+
+Model yang digunakan:
+
+```python
+LogisticRegression(
+    max_iter=1000,
+    random_state=42
+)
+```
+
+### Test Accuracy
 
 Model menghasilkan:
 
-- `predict()` untuk label kelas.
-- `predict_proba()[:, 1]` untuk probabilitas kelas positif yang digunakan pada kurva ROC dan Precision-Recall.
+> **Accuracy = 80.3%**
 
-## 📊 Hasil Evaluasi
+Model berhasil memprediksi **49 dari 61** data testing dengan benar.
 
-### Ringkasan metrik
+---
 
-| Metrik | Nilai |
-|---|---:|
-| Accuracy | **80,3%** (49 dari 61 prediksi benar) |
-| Precision — kelas 1 | **0,80** |
-| Recall — kelas 1 | **0,85** |
-| F1-score — kelas 1 | **0,82** |
-| Precision — kelas 0 | 0,81 |
-| Recall — kelas 0 | 0,75 |
-| F1-score — kelas 0 | 0,78 |
-| ROC-AUC | **0,87** |
+## 📏 Model Evaluation
 
 ### 1. Confusion Matrix
 
-| Aktual / Prediksi | Prediksi 0 | Prediksi 1 |
+Confusion Matrix:
+
+| Actual \\ Predicted | 0 | 1 |
 |---|---:|---:|
-| **Aktual 0** | **21 (TN)** | **7 (FP)** |
-| **Aktual 1** | **5 (FN)** | **28 (TP)** |
+| **0** | 21 | 7 |
+| **1** | 5 | 28 |
 
-**Interpretasi:**
+Interpretasi:
 
-- **True Negative (TN = 21):** pasien kelas 0 diprediksi sebagai kelas 0.
-- **True Positive (TP = 28):** pasien kelas 1 diprediksi sebagai kelas 1.
-- **False Positive (FP = 7):** pasien kelas 0 keliru diprediksi sebagai kelas 1.
-- **False Negative (FN = 5):** pasien kelas 1 keliru diprediksi sebagai kelas 0.
+- **TN = 21** → pasien sehat diprediksi sehat.
+- **FP = 7** → pasien sehat diprediksi sakit.
+- **FN = 5** → pasien sakit diprediksi sehat.
+- **TP = 28** → pasien sakit diprediksi sakit.
 
-Dalam konteks deteksi penyakit, **false negative** patut diperhatikan karena kasus positif bisa terlewat. Namun, konsekuensi FP dan FN perlu ditentukan melalui konteks klinis yang nyata, bukan hanya dari notebook.
+Dalam konteks medis, **False Negative menjadi perhatian penting**, karena pasien yang sebenarnya sakit tetapi diprediksi sehat dapat terlewat dari penanganan.
+
+---
 
 ### 2. Classification Report
 
-| Kelas | Precision | Recall | F1-score | Support |
+| Class | Precision | Recall | F1-Score | Support |
 |---|---:|---:|---:|---:|
-| 0 — Tidak terindikasi | 0,81 | 0,75 | 0,78 | 28 |
-| 1 — Terindikasi | 0,80 | **0,85** | **0,82** | 33 |
+| Sehat | 0.81 | 0.75 | 0.78 | 28 |
+| Sakit | 0.80 | 0.85 | 0.82 | 33 |
+| **Accuracy** | | | **0.80** | **61** |
+| Macro Avg | 0.80 | 0.80 | 0.80 | 61 |
+| Weighted Avg | 0.80 | 0.80 | 0.80 | 61 |
 
-**Recall kelas 1 sebesar 85%** berarti 28 dari 33 kasus positif pada data uji berhasil dikenali. **Precision kelas 1 sebesar 80%** berarti 28 dari 35 prediksi positif benar-benar merupakan kelas 1 menurut label dataset.
+### Interpretation
 
-### 3. ROC Curve dan ROC-AUC
+Untuk kelas **Sakit (1)**:
 
-Kurva ROC membandingkan **True Positive Rate (TPR)** dan **False Positive Rate (FPR)** pada berbagai nilai *threshold*.
+- Precision = **80%**
+- Recall = **85%**
+- F1-score = **82%**
 
-Notebook melaporkan **ROC-AUC = 0,87**, yang menunjukkan kemampuan diskriminasi model yang baik pada data uji. AUC tidak sama dengan accuracy, dan tidak langsung menunjukkan apakah probabilitas model sudah terkalibrasi.
+Recall menjadi metrik penting karena menunjukkan kemampuan model dalam menangkap pasien yang benar-benar memiliki penyakit jantung.
 
-### 4. Precision-Recall Curve
+---
 
-Kurva Precision-Recall memperlihatkan perubahan precision dan recall ketika *threshold* prediksi diubah.
+## 📈 ROC Curve & AUC
 
-**Catatan konsistensi notebook:** bagian interpretasi menyebut **Average Precision (AP) = 0,90**, sedangkan judul grafik tertulis **0,87**. Kode menghitung `average_precision_score(y_test, y_pred_proba)` dan menampilkannya pada legenda grafik. Angka AP sebaiknya diperiksa dari hasil perhitungan tersebut; nilai 0,87 pada judul grafik ditulis secara manual.
+ROC Curve digunakan untuk melihat hubungan antara:
 
-## 💡 Insight Utama
+- **True Positive Rate (TPR / Recall)**
+- **False Positive Rate (FPR)**
 
-1. **Accuracy bukan gambaran lengkap.** Nilai 80,3% perlu dibaca bersama confusion matrix dan metrik per kelas.
-2. **Recall penting ketika kasus positif tidak boleh mudah terlewat.** Model masih menghasilkan 5 false negative pada 33 kasus positif di data uji.
-3. **ROC-AUC mengukur kemampuan pemeringkatan kelas.** Nilai 0,87 menunjukkan diskriminasi yang baik pada sampel pengujian ini.
-4. **Threshold menentukan trade-off.** Menurunkan threshold dari nilai default 0,5 dapat meningkatkan recall, tetapi biasanya juga meningkatkan false positive; dampaknya perlu diuji, bukan diasumsikan.
-5. **Kualitas data memengaruhi validitas evaluasi.** Penghapusan 723 duplikat mengurangi risiko pengulangan observasi, tetapi asal duplikasi perlu dipahami.
+pada berbagai threshold.
 
-## ⚠️ Keterbatasan
+Hasil notebook:
 
-- Hanya menggunakan satu pembagian data latih dan uji, tanpa cross-validation.
-- Data uji relatif kecil (**61 observasi**), sehingga estimasi metrik dapat berubah pada sampel lain.
-- Belum ada analisis ketidakpastian metrik, kalibrasi probabilitas, atau validasi eksternal.
-- Belum ada eksperimen perubahan threshold beserta perbandingan FP/FN yang dihasilkan.
-- Belum ada validasi klinis; hasil tidak dapat dijadikan dasar diagnosis pasien.
-- Terdapat perbedaan angka AP pada narasi dan judul grafik Precision-Recall yang perlu diselaraskan.
+> **ROC-AUC = 0.87**
 
-## 🚀 Pengembangan Berikutnya
+Nilai ini menunjukkan kemampuan diskriminasi model yang baik dalam membedakan pasien sehat dan pasien dengan penyakit jantung.
 
-- Melakukan **Stratified K-Fold Cross-Validation**.
-- Menguji beberapa *threshold* berdasarkan kebutuhan sensitivitas dan spesifisitas.
-- Membandingkan ROC-AUC dengan Average Precision dan PR Curve secara konsisten.
-- Memeriksa **probability calibration** dan menambahkan interval kepercayaan metrik.
-- Menguji performa pada data eksternal yang representatif.
-- Menggunakan `Pipeline` untuk menggabungkan preprocessing dan model secara lebih terstruktur.
+---
 
-## 📚 Hasil Pembelajaran
+## 🎯 Precision-Recall Curve
 
-Notebook ini memperkuat pemahaman bahwa **evaluasi klasifikasi bukan sekadar menghitung accuracy**. Confusion matrix menunjukkan jenis kesalahan, classification report menjelaskan performa per kelas, sementara ROC-AUC dan Precision-Recall membantu mengevaluasi kemampuan model pada berbagai threshold.
+Notebook juga menggunakan Precision-Recall Curve untuk melihat trade-off antara Precision dan Recall pada berbagai threshold.
 
-## 📁 Struktur Proyek
+Hasil evaluasi:
+
+> **Average Precision (AP) = 0.90**
+
+Metric ini memberikan informasi tambahan mengenai performa model pada kelas positif.
+
+---
+
+## ⚖️ Precision vs Recall Trade-Off
+
+Untuk kasus prediksi penyakit jantung, pemilihan threshold merupakan hal penting.
+
+- **Recall tinggi** → lebih banyak pasien sakit berhasil terdeteksi.
+- **False Negative rendah** → lebih sedikit pasien sakit yang terlewat.
+- **False Positive meningkat** → lebih banyak pasien sehat yang mungkin perlu pemeriksaan tambahan.
+
+Notebook merekomendasikan eksperimen threshold, misalnya menurunkan threshold default `0.5` menjadi `0.4` atau `0.3`, apabila tujuan utama adalah menekan False Negative.
+
+---
+
+## 💡 Key Insights
+
+1. **Accuracy saja tidak cukup** untuk mengevaluasi model klasifikasi.
+2. Confusion Matrix membantu memahami jenis kesalahan model.
+3. Logistic Regression menghasilkan **accuracy 80.3%**.
+4. Model memperoleh **ROC-AUC 0.87**.
+5. Recall kelas `Sakit` mencapai **85%**.
+6. Precision kelas `Sakit` mencapai **80%**.
+7. Precision-Recall Curve menghasilkan **Average Precision 0.90**.
+8. Dalam konteks medis, False Negative perlu mendapat perhatian khusus.
+9. Threshold dapat disesuaikan sesuai kebutuhan dan risiko aplikasi.
+10. Fitur seperti `cp` dan `thalach` disebut dalam notebook memiliki hubungan kuat dengan target positif berdasarkan visualisasi EDA.
+
+---
+
+## ⚠️ Limitations
+
+Beberapa hal yang masih dapat dikembangkan:
+
+- Dataset menjadi jauh lebih kecil setelah penghapusan duplicate.
+- Model yang digunakan hanya Logistic Regression.
+- Belum dilakukan cross-validation.
+- Belum dilakukan hyperparameter tuning.
+- Belum dibandingkan dengan model lain seperti Random Forest, SVM, atau Gradient Boosting.
+- Belum dilakukan threshold optimization secara sistematis.
+- Konteks medis membutuhkan validasi dan evaluasi yang lebih ketat sebelum digunakan pada sistem nyata.
+
+---
+
+## 🚀 Next Steps
+
+Pengembangan berikutnya dapat mencakup:
+
+- **Cross-Validation**
+- Hyperparameter tuning Logistic Regression
+- Perbandingan dengan Random Forest
+- Perbandingan dengan Support Vector Machine
+- Perbandingan dengan Gradient Boosting
+- Threshold tuning berdasarkan target recall
+- Optimasi False Negative
+- Perbandingan ROC-AUC dan PR-AUC antar model
+- Evaluasi lebih lanjut sebelum penggunaan pada kasus nyata
+
+---
+
+## 🔄 Workflow
+
+```text
+Heart Disease Dataset
+        ↓
+Initial Exploration
+        ↓
+Check Missing Values & Duplicates
+        ↓
+Drop Duplicates
+        ↓
+Exploratory Data Analysis
+        ↓
+Train-Test Split
+        ↓
+StandardScaler
+        ↓
+Logistic Regression
+        ↓
+Prediction & Probability
+        ↓
+Confusion Matrix
+        ↓
+Classification Report
+        ↓
+ROC Curve & ROC-AUC
+        ↓
+Precision-Recall Curve & AP
+        ↓
+Threshold & Medical Trade-Off Analysis
+        ↓
+Conclusion & Next Steps
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Logistic Regression
+- StandardScaler
+- Confusion Matrix
+- Classification Report
+- ROC Curve
+- ROC-AUC
+- Precision-Recall Curve
+- Average Precision
+- Google Colab / Jupyter Notebook
+
+---
+
+## 📁 Project Structure
 
 ```text
 Day_39_Evaluation_Classification_Model_using_ROC_AUC_&_Confusion_Matrix/
+│
 ├── Day_39_Evaluation_Classification_Model_using_ROC_AUC_&_Confusion_Matrix.ipynb
 └── README.md
 ```
 
-## 📝 Kesimpulan
+---
 
-Logistic Regression memperoleh **accuracy 80,3%**, **recall kelas positif 85%**, dan **ROC-AUC 0,87** pada dataset uji. Model mengenali 28 dari 33 kasus positif, tetapi masih melewatkan 5 kasus positif dan menghasilkan 7 false positive.
+## 🧠 Conclusion
 
-Hasil ini cocok sebagai **studi evaluasi model klasifikasi**, sekaligus menegaskan bahwa pemilihan metrik dan threshold harus mengikuti konsekuensi kesalahan prediksi. Untuk penggunaan nyata di bidang kesehatan, diperlukan evaluasi dan validasi yang jauh lebih ketat.
+Day 39 berfokus pada pentingnya melakukan evaluasi model klasifikasi menggunakan lebih dari satu metrik.
+
+Pada studi kasus prediksi penyakit jantung, Logistic Regression menghasilkan accuracy **80.3%**, ROC-AUC **0.87**, recall kelas `Sakit` **85%**, dan Average Precision **0.90**.
+
+Hasil tersebut menunjukkan performa baseline yang cukup baik, tetapi evaluasi tidak berhenti pada accuracy. Confusion Matrix, Precision, Recall, F1, ROC-AUC, dan Precision-Recall Curve memberikan perspektif yang lebih lengkap mengenai kemampuan serta kesalahan model.
+
+Terutama pada kasus medis, **Recall dan False Negative perlu diperhatikan secara serius**, karena kesalahan dalam melewatkan pasien yang sebenarnya sakit dapat memiliki konsekuensi lebih besar dibandingkan False Positive.
+
+---
+
+## 👨‍💻 Author
+
+**Arief Wicaksono**  
+Aspiring AI Engineer | Data Science Student
+
+---
+
+⭐ *Learning Machine Learning one day at a time.*
