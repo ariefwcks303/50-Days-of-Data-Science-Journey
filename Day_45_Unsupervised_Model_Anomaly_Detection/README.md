@@ -241,4 +241,11 @@ Eksperimen ini menunjukkan bahwa Isolation Forest dapat digunakan sebagai pendek
 
 ---
 
-**Author:** [Your Name]
+## 👨‍💻 Author
+
+**Arief Wicaksono**  
+Aspiring AI Engineer | Data Science Student
+
+---
+
+⭐ *Learning Machine Learning one day at a time.*
