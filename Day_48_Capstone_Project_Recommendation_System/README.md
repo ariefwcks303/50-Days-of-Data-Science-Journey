@@ -1,24 +1,18 @@
 # 🎬 Day 48 --- Capstone Project: Sistem Rekomendasi Film dengan Content-Based Filtering
 
-```{=html}
+
 <p align="center">
-```
-`<strong>`{=html}Movie Recommendation
-System`</strong>`{=html}`<br>`{=html} Sistem rekomendasi film berbasis
-kemiripan genre, keywords, dan sinopsis.
-```{=html}
+  <strong>Movie Recommendation System</strong><br>
+  Sistem rekomendasi film berbasis kemiripan genre, keywords, dan sinopsis.
 </p>
-```
-```{=html}
+
 <p align="center">
-```
-`<img src="https://img.shields.io/badge/Project-Capstone-blue" alt="Project: Capstone">`{=html}
-`<img src="https://img.shields.io/badge/Type-Recommendation%20System-purple" alt="Type: Recommendation System">`{=html}
-`<img src="https://img.shields.io/badge/Method-Content--Based%20Filtering-green" alt="Method: Content-Based Filtering">`{=html}
-`<img src="https://img.shields.io/badge/Python-3.x-yellow" alt="Python">`{=html}
-```{=html}
+  <img src="https://img.shields.io/badge/Project-Capstone-blue" alt="Project: Capstone">
+  <img src="https://img.shields.io/badge/Type-Recommendation%20System-purple" alt="Type: Recommendation System">
+  <img src="https://img.shields.io/badge/Method-Content--Based%20Filtering-green" alt="Method: Content-Based Filtering">
+  <img src="https://img.shields.io/badge/Python-3.x-yellow" alt="Python">
 </p>
-```
+
 ## 📌 1. Gambaran Proyek
 
 Proyek ini membangun sistem rekomendasi film sederhana menggunakan
