@@ -446,7 +446,7 @@ secara lebih formal.
 
 
 <p align="center">
-```
+
 `<sub>Day 48 --- 50 Days of Data Science Journey`</sub>`
 </p>
-```
+
