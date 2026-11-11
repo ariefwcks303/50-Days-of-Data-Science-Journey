@@ -442,11 +442,4 @@ Pengembangan berikutnya dapat menggabungkan sinyal rating dan perilaku
 pengguna, memperluas metadata, serta mengevaluasi relevansi rekomendasi
 secara lebih formal.
 
-------------------------------------------------------------------------
-
-
-<p align="center">
-
-`<sub>Day 48 --- 50 Days of Data Science Journey`</sub>`
-</p>
 
