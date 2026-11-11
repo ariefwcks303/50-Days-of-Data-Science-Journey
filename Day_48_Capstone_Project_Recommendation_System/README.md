@@ -444,10 +444,9 @@ secara lebih formal.
 
 ------------------------------------------------------------------------
 
-```{=html}
+
 <p align="center">
 ```
-`<sub>`{=html}Day 48 --- 50 Days of Data Science Journey`</sub>`{=html}
-```{=html}
+`<sub>Day 48 --- 50 Days of Data Science Journey`</sub>`
 </p>
 ```
